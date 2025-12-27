@@ -1,15 +1,15 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   typescript: {
-    ignoreBuildErrors: false, // Enable type checking in production
+    ignoreBuildErrors: false,
   },
   images: {
     unoptimized: false,
-    domains: [
-      'localhost',
-      'priyaherbal.com',
-      'www.priyaherbal.com',
-      'geisrdwsimouxlalschy.supabase.co', // Supabase image storage
+    remotePatterns: [
+      { protocol: 'https', hostname: 'localhost' },
+      { protocol: 'https', hostname: 'priyaherbal.com' },
+      { protocol: 'https', hostname: 'www.priyaherbal.com' },
+      { protocol: 'https', hostname: 'geisrdwsimouxlalschy.supabase.co' },
     ],
     formats: ['image/webp', 'image/avif'],
   },
@@ -35,7 +35,6 @@ const nextConfig = {
     ]
   },
   reactStrictMode: true,
-  swcMinify: true,
 }
 
 export default nextConfig

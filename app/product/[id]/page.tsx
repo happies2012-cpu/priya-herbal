@@ -17,7 +17,7 @@ const productData = {
   price: 249,
   originalPrice: 399,
   rating: 4.7,
-  reviews: 234,
+  reviewCount: 234,
   description: "Pure neem oil infused with coconut oil for healthy hair growth and nourishment.",
   longDescription: `Experience the power of nature with our Premium Neem Hair Oil, a time-tested Ayurvedic formula that combines pure neem extract with coconut oil. This potent blend is specifically formulated to prevent hair fall, promote hair growth, and improve overall hair health.
 
@@ -120,7 +120,7 @@ export default function ProductDetailPage({ params }: { params: { id: string } }
                     ))}
                   </div>
                   <span className="font-semibold">{productData.rating}</span>
-                  <span className="text-muted-foreground">({productData.reviews} reviews)</span>
+                  <span className="text-muted-foreground">({productData.reviewCount} reviews)</span>
                 </div>
               </div>
 
