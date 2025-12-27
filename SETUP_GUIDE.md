@@ -7,10 +7,10 @@
 2. Create new project
 3. Copy URL and anon key
 4. Save to `.env.local`:
-   ```
+   \`\`\`
    NEXT_PUBLIC_SUPABASE_URL=your-url
    NEXT_PUBLIC_SUPABASE_ANON_KEY=your-key
-   ```
+   \`\`\`
 
 ### Get Cashfree API Keys
 1. Sign up at cashfree.com
@@ -21,12 +21,12 @@
 ## Step 2: Database Setup
 
 ### Run Migration Scripts
-```bash
+\`\`\`bash
 # Connect to Supabase SQL Editor
 # Execute scripts in order:
 # 1. scripts/001_create_tables.sql
 # 2. scripts/002_seed_products.sql
-```
+\`\`\`
 
 ### Verify Tables Created
 In Supabase dashboard, check:
@@ -50,7 +50,7 @@ In Supabase dashboard, check:
 
 ## Step 4: Local Development
 
-```bash
+\`\`\`bash
 # Install dependencies
 npm install
 
@@ -58,7 +58,7 @@ npm install
 npm run dev
 
 # Server runs at http://localhost:3000
-```
+\`\`\`
 
 ### Test Authentication
 1. Go to http://localhost:3000/auth/sign-up
@@ -84,10 +84,10 @@ npm run dev
 ## Step 6: Deploy to Vercel
 
 ### Connect GitHub
-```bash
+\`\`\`bash
 # Push to GitHub
 git push origin main
-```
+\`\`\`
 
 ### Deploy on Vercel
 1. vercel.com → New Project

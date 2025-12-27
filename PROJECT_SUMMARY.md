@@ -13,7 +13,7 @@ A **production-ready, fully functional e-commerce platform** for selling premium
 
 ## 📁 Project Structure
 
-```
+\`\`\`
 priyaherbal/
 ├── app/                          # All pages & routes
 │   ├── page.tsx                 # Home page
@@ -76,7 +76,7 @@ priyaherbal/
     ├── PRODUCTION_CHECKLIST.md # Pre-launch checklist
     ├── GETTING_LIVE.md         # Step-by-step deployment
     └── PROJECT_SUMMARY.md      # This file
-```
+\`\`\`
 
 ## ✨ Features Included
 
@@ -117,11 +117,11 @@ priyaherbal/
 ## 🚀 How to Launch (Summary)
 
 ### 1. Local Testing (10 minutes)
-```bash
+\`\`\`bash
 npm install
 npm run dev
 # Visit http://localhost:3000
-```
+\`\`\`
 
 ### 2. Supabase Setup (10 minutes)
 - Create Supabase project

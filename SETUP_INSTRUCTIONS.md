@@ -24,11 +24,11 @@ Your PriyaHerbal e-commerce platform is now **100% production-ready** with:
 ### Step 2: Set Environment Variables
 After deployment, go to **Settings → Environment Variables** and add:
 
-```
+\`\`\`
 NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
 NEXT_PUBLIC_DEV_SUPABASE_REDIRECT_URL=http://localhost:3000
-```
+\`\`\`
 
 ### Step 3: Database Auto-Initialization
 1. Visit your deployed site: `https://your-project.vercel.app`
@@ -200,12 +200,12 @@ Search for "8500647979" in these files:
 In Supabase dashboard:
 1. Go to SQL Editor
 2. Run INSERT command:
-```sql
+\`\`\`sql
 INSERT INTO public.products 
 (name, slug, description, price, original_price, category, image_url, rating, review_count)
 VALUES
 ('Product Name', 'product-slug', 'Description', 299, 499, 'Category', '/image.jpg', 4.5, 100);
-```
+\`\`\`
 
 ### Enable Payment Gateway
 To add Cashfree payments:

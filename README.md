@@ -75,7 +75,7 @@ A stunning, production-ready e-commerce website for premium Indian herbal produc
 
 ## Project Structure
 
-```
+\`\`\`
 priyaherbal/
 ├── app/                    # Next.js app router
 │   ├── page.tsx           # Home page with hero & featured products
@@ -105,7 +105,7 @@ priyaherbal/
 ├── public/               # Static assets
 ├── scripts/              # Database migration scripts
 └── documentation/        # Setup guides and checklists
-```
+\`\`\`
 
 ## Getting Started
 
@@ -117,34 +117,34 @@ priyaherbal/
 ### Installation
 
 1. **Clone the repository**
-   ```bash
+   \`\`\`bash
    git clone <repo-url>
    cd priyaherbal
-   ```
+   \`\`\`
 
 2. **Install dependencies**
-   ```bash
+   \`\`\`bash
    npm install
-   ```
+   \`\`\`
 
 3. **Set up environment variables**
-   ```bash
+   \`\`\`bash
    cp .env.example .env.local
    # Add your Supabase credentials:
    NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
    NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
    NEXT_PUBLIC_DEV_SUPABASE_REDIRECT_URL=http://localhost:3000
-   ```
+   \`\`\`
 
 4. **Start the development server**
-   ```bash
+   \`\`\`bash
    npm run dev
-   ```
+   \`\`\`
 
 5. **Open in browser**
-   ```
+   \`\`\`
    http://localhost:3000
-   ```
+   \`\`\`
 
 ✅ **Database auto-initializes on first load** - No manual SQL needed!
 
@@ -234,11 +234,11 @@ Contact details are embedded throughout the platform:
 
 ### Colors & Branding
 Edit color tokens in `app/globals.css`:
-```css
+\`\`\`css
 --primary: oklch(0.35 0.08 145);    /* Forest Green */
 --secondary: oklch(0.75 0.12 60);   /* Warm Gold */
 --accent: oklch(0.58 0.15 25);      /* Terracotta */
-```
+\`\`\`
 
 ### Update Contact Information
 Search for "8500647979" in:
@@ -248,12 +248,12 @@ Search for "8500647979" in:
 
 ### Products
 Add/edit products in Supabase dashboard → SQL Editor:
-```sql
+\`\`\`sql
 INSERT INTO public.products 
 (name, slug, description, price, original_price, category, image_url, rating, review_count)
 VALUES
 ('Product Name', 'product-slug', 'Description', 299, 499, 'Hair Care', '/image.jpg', 4.5, 100);
-```
+\`\`\`
 
 ### Content
 - Blog posts: Update via Supabase dashboard
@@ -280,15 +280,15 @@ VALUES
 3. Add environment variables
 4. Deploy (automatic from git pushes)
 
-```bash
+\`\`\`bash
 vercel deploy
-```
+\`\`\`
 
 ### Local Production Build
-```bash
+\`\`\`bash
 npm run build
 npm run start
-```
+\`\`\`
 
 ## Performance Optimizations
 
@@ -312,7 +312,7 @@ npm run start
 
 ## Testing
 
-```bash
+\`\`\`bash
 # Development
 npm run dev
 
@@ -324,7 +324,7 @@ npm run start
 
 # Check TypeScript
 npm run type-check
-```
+\`\`\`
 
 ## Troubleshooting
 

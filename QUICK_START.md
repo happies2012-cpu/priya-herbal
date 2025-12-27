@@ -5,23 +5,23 @@
 ### 1. Set Up Environment Variables
 Create a `.env.local` file in the project root with your Supabase credentials:
 
-```bash
+\`\`\`bash
 NEXT_PUBLIC_SUPABASE_URL=https://your-project.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your-anon-key-here
 NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=your-publishable-key
 NEXT_PUBLIC_DEV_SUPABASE_REDIRECT_URL=http://localhost:3000
 SUPABASE_JWT_SECRET=your-jwt-secret
 SUPABASE_SERVICE_ROLE_KEY=your-service-role-key
-```
+\`\`\`
 
 Get these values from:
 - Supabase Dashboard → Your Project → Settings → API
 
 ### 2. Install Dependencies & Run Locally
-```bash
+\`\`\`bash
 npm install
 npm run dev
-```
+\`\`\`
 Visit http://localhost:3000 - You should see the home page!
 
 ### 3. Set Up Database (First Time Only)

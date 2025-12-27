@@ -121,7 +121,7 @@
 ## File Structure Verification
 
 ### App Directory
-```
+\`\`\`
 app/
 ├── ✅ layout.tsx (with DatabaseInit)
 ├── ✅ page.tsx (Home)
@@ -139,11 +139,11 @@ app/
 ├── ✅ protected/account/page.tsx
 ├── ✅ api/setup/route.ts
 └── ✅ not-found.tsx
-```
+\`\`\`
 **Status**: All 16 files ✅
 
 ### Components Directory
-```
+\`\`\`
 components/
 ├── ✅ navigation.tsx
 ├── ✅ footer.tsx
@@ -160,11 +160,11 @@ components/
 ├── ✅ product/reviews-section.tsx
 ├── ✅ product/related-products.tsx
 └── ✅ ui/* (50+ shadcn/ui components)
-```
+\`\`\`
 **Status**: All components ✅
 
 ### Library Directory
-```
+\`\`\`
 lib/
 ├── ✅ supabase/client.ts
 ├── ✅ supabase/server.ts
@@ -174,38 +174,38 @@ lib/
 ├── ✅ api/cart.ts
 ├── ✅ api/orders.ts
 └── ✅ utils.ts
-```
+\`\`\`
 **Status**: All utilities ✅
 
 ### Scripts Directory
-```
+\`\`\`
 scripts/
 ├── ✅ 001_create_tables.sql
 ├── ✅ 002_seed_products.sql
 └── ✅ init-database.ts
-```
+\`\`\`
 **Status**: All scripts ✅
 
 ### Configuration Files
-```
+\`\`\`
 ├── ✅ package.json
 ├── ✅ tsconfig.json
 ├── ✅ next.config.mjs
 ├── ✅ .gitignore
 ├── ✅ .env.example
 └── ✅ proxy.js (Next.js 16 middleware)
-```
+\`\`\`
 **Status**: All config ✅
 
 ### Documentation
-```
+\`\`\`
 ├── ✅ README.md
 ├── ✅ SETUP_INSTRUCTIONS.md
 ├── ✅ LAUNCH_CHECKLIST.md
 ├── ✅ COMPLETION_SUMMARY.md
 ├── ✅ SYSTEM_STATUS.md (This file)
 └── ✅ GETTING_LIVE.md
-```
+\`\`\`
 **Status**: All docs ✅
 
 ---

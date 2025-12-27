@@ -62,15 +62,15 @@
 ## Deployment Steps
 
 ### 1. Prepare Supabase (5 minutes)
-```bash
+\`\`\`bash
 # You should already have:
 - Supabase project created
 - NEXT_PUBLIC_SUPABASE_URL
 - NEXT_PUBLIC_SUPABASE_ANON_KEY
-```
+\`\`\`
 
 ### 2. Deploy to Vercel (2 minutes)
-```bash
+\`\`\`bash
 # Option A: Via Vercel Dashboard
 1. Go to vercel.com
 2. Click "Add New..." → "Project"
@@ -81,16 +81,16 @@
 # Option B: Via CLI
 npm i -g vercel
 vercel
-```
+\`\`\`
 
 ### 3. Configure Environment Variables (1 minute)
 In Vercel Dashboard → Settings → Environment Variables:
-```
+\`\`\`
 NEXT_PUBLIC_SUPABASE_URL=https://xxx.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJxxx...
 NEXT_PUBLIC_DEV_SUPABASE_REDIRECT_URL=https://your-domain.com
 SUPABASE_SERVICE_ROLE_KEY=eyJxxx... (optional, for server functions)
-```
+\`\`\`
 
 ### 4. Connect Custom Domain (2 minutes)
 In Vercel Dashboard → Settings → Domains:
@@ -219,7 +219,7 @@ In Vercel Dashboard → Settings → Domains:
 
 ## Files Structure Overview
 
-```
+\`\`\`
 priyaherbal-ecommerce/
 ├── app/
 │   ├── layout.tsx              # Root layout with DB init
@@ -255,7 +255,7 @@ priyaherbal-ecommerce/
 ├── package.json                # Dependencies
 ├── tsconfig.json               # TypeScript config
 └── next.config.mjs             # Next.js configuration
-```
+\`\`\`
 
 ---
 
@@ -278,14 +278,14 @@ Your PriyaHerbal platform is **production-ready** when:
 
 ## Go Live!
 
-```bash
+\`\`\`bash
 # Your app is ready. Just:
 1. Deploy to Vercel
 2. Set environment variables
 3. Add custom domain
 4. Verify everything works
 5. Share with the world! 🚀
-```
+\`\`\`
 
 **PriyaHerbal is ready to serve customers!**
 

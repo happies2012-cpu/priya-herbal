@@ -2,11 +2,11 @@
 
 ## Step 1: Verify Your Setup Works Locally (5 min)
 
-```bash
+\`\`\`bash
 # Terminal
 npm install
 npm run dev
-```
+\`\`\`
 
 Visit http://localhost:3000 - Should see home page ✓
 
@@ -30,14 +30,14 @@ In Supabase Dashboard:
   - JWT secret → Add to `SUPABASE_JWT_SECRET`
 
 Create `.env.local` in project root:
-```bash
+\`\`\`bash
 NEXT_PUBLIC_SUPABASE_URL=https://your-id.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJ...
 NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=...
 SUPABASE_SERVICE_ROLE_KEY=eyJ...
 SUPABASE_JWT_SECRET=...
 NEXT_PUBLIC_DEV_SUPABASE_REDIRECT_URL=http://localhost:3000
-```
+\`\`\`
 
 ## Step 4: Set Up Database (3 min) ⚠️ CRITICAL
 
@@ -52,9 +52,9 @@ Your database is now ready! ✓
 
 ## Step 5: Test Everything Locally (5 min)
 
-```bash
+\`\`\`bash
 npm run dev
-```
+\`\`\`
 
 Then test:
 - [ ] Home page loads
@@ -67,11 +67,11 @@ Then test:
 ## Step 6: Deploy to Vercel (2 min)
 
 1. Push your code to GitHub:
-```bash
+\`\`\`bash
 git add .
 git commit -m "First commit"
 git push origin main
-```
+\`\`\`
 
 2. Go to https://vercel.com → Click "Add New..." → "Project"
 3. Import your GitHub repository

@@ -151,7 +151,7 @@ Database initializes automatically on first load:
 ## Deployment Ready
 
 ### For Vercel Deployment:
-```bash
+\`\`\`bash
 1. Push code to GitHub
 2. Connect GitHub to Vercel
 3. Add environment variables:
@@ -160,14 +160,14 @@ Database initializes automatically on first load:
    - NEXT_PUBLIC_DEV_SUPABASE_REDIRECT_URL
 4. Click Deploy
 5. Done! Site is live
-```
+\`\`\`
 
 ### For Local Development:
-```bash
+\`\`\`bash
 npm install
 npm run dev
 # Opens http://localhost:3000
-```
+\`\`\`
 
 ---
 
@@ -211,7 +211,7 @@ All include product images, descriptions, ratings, reviews.
 
 ## File Structure Overview
 
-```
+\`\`\`
 priyaherbal/
 ├── 📄 app/
 │   ├── page.tsx (Home)
@@ -243,7 +243,7 @@ priyaherbal/
 ├── 📄 next.config.mjs (Next.js config)
 ├── 📄 tsconfig.json (TypeScript config)
 └── 📄 Documentation files
-```
+\`\`\`
 
 ---
 

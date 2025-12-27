@@ -45,11 +45,11 @@
 
 After creating your project, copy these from Supabase Dashboard → Settings → API:
 
-```
+\`\`\`
 NEXT_PUBLIC_SUPABASE_URL = (Copy the URL field)
 NEXT_PUBLIC_SUPABASE_ANON_KEY = (Copy the "anon" key under Project API Keys)
 SUPABASE_SERVICE_ROLE_KEY = (Copy the "service_role" key)
-```
+\`\`\`
 
 Add these to your `.env.local` file in the project root.
 
