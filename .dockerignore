@@ -1,0 +1,51 @@
+# Dependencies
+node_modules
+
+# Environment variables
+.env*
+
+# Next.js
+.next
+out
+
+# Git
+.git
+
+# IDE
+.vscode
+.idea
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Database
+*.db
+*.db-journal
+
+# Testing
+coverage
+.nyc_output
+
+# Documentation
+*.md
+*.txt
+
+# Backup files
+*~
+*.bak
+*.swp
+
+# NPM
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# pnpm
+pnpm-lock.yaml
+
+# Development
+debug.log

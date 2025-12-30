@@ -1,0 +1,87 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: priya-herbal-app
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+      - NEXT_PUBLIC_SUPABASE_URL=${NEXT_PUBLIC_SUPABASE_URL}
+      - NEXT_PUBLIC_SUPABASE_ANON_KEY=${NEXT_PUBLIC_SUPABASE_ANON_KEY}
+      - SUPABASE_SERVICE_ROLE_KEY=${SUPABASE_SERVICE_ROLE_KEY}
+      - NEXT_PUBLIC_CASHFREE_CLIENT_ID=${NEXT_PUBLIC_CASHFREE_CLIENT_ID}
+      - NEXT_PUBLIC_CASHFREE_CLIENT_SECRET=${NEXT_PUBLIC_CASHFREE_CLIENT_SECRET}
+      - NEXT_PUBLIC_CASHFREE_MODE=${NEXT_PUBLIC_CASHFREE_MODE}
+      - RESEND_API_KEY=${RESEND_API_KEY}
+      - FROM_EMAIL=${FROM_EMAIL}
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - NEXTAUTH_SECRET=${NEXTAUTH_SECRET}
+      - NEXTAUTH_URL=${NEXTAUTH_URL}
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+    volumes:
+      - /app/node_modules
+      - /app/.next
+    networks:
+      - app-network
+
+  db:
+    image: postgres:15-alpine
+    container_name: priya-herbal-db
+    restart: unless-stopped
+    environment:
+      - POSTGRES_DB=priya_herbal
+      - POSTGRES_USER=priya_user
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./scripts:/docker-entrypoint-initdb.d
+    networks:
+      - app-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U priya_user -d priya_herbal"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  init-db:
+    image: postgres:15-alpine
+    container_name: priya-herbal-init-db
+    restart: "no"
+    environment:
+      - PGPASSWORD=${DB_PASSWORD}
+    command: >
+      bash -c "
+        until pg_isready -h db -p 5432 -U priya_user;
+        do
+          echo 'Waiting for database connection...';
+          sleep 2;
+        done;
+        echo 'Database connected. Running initialization scripts...';
+        psql -h db -U priya_user -d priya_herbal -f /scripts/001_create_tables.sql;
+        psql -h db -U priya_user -d priya_herbal -f /scripts/002_seed_products.sql;
+        psql -h db -U priya_user -d priya_herbal -f /scripts/003_enhanced_affiliate_tables.sql;
+        psql -h db -U priya_user -d priya_herbal -f /scripts/004_seed_affiliate_data.sql;
+        echo 'Database initialization completed.';
+      "
+    volumes:
+      - ./scripts:/scripts
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  postgres_data:
