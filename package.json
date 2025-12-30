@@ -12,7 +12,8 @@
     "docker:build": "docker build -t priya-herbal .",
     "docker:run": "docker run -p 3000:3000 priya-herbal",
     "docker:dev": "docker-compose up --build",
-    "docker:prod": "docker-compose -f docker-compose.yml up -d"
+    "docker:prod": "docker-compose -f docker-compose.yml up -d",
+    "vercel-build": "pnpm install && npx prisma generate && pnpm run build"
   },
   "dependencies": {
     "@google/generative-ai": "^0.24.1",
