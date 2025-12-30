@@ -1,165 +1,345 @@
-# Complete Setup Guide for PriyaHerbal
+# Complete Setup Guide for Priya Herbal E-commerce Platform
 
-## Step 1: Environment Setup
+This guide provides comprehensive instructions for setting up the Priya Herbal e-commerce platform for development, testing, and production deployment.
 
-### Create Supabase Project
-1. Go to supabase.com
-2. Create new project
-3. Copy URL and anon key
-4. Save to `.env.local`:
-   \`\`\`
-   NEXT_PUBLIC_SUPABASE_URL=your-url
-   NEXT_PUBLIC_SUPABASE_ANON_KEY=your-key
-   \`\`\`
+## 📋 Table of Contents
 
-### Get Cashfree API Keys
-1. Sign up at cashfree.com
-2. Go to merchant dashboard
-3. Get API Key ID and Secret
-4. Add to environment variables
+1. [Prerequisites](#prerequisites)
+2. [Development Setup](#development-setup)
+3. [Production Setup](#production-setup)
+4. [Database Initialization](#database-initialization)
+5. [Environment Variables](#environment-variables)
+6. [Payment Gateway Integration](#payment-gateway-integration)
+7. [Authentication Setup](#authentication-setup)
+8. [Docker Deployment](#docker-deployment)
+9. [Coolify Deployment](#coolify-deployment)
+10. [Troubleshooting](#troubleshooting)
 
-## Step 2: Database Setup
+## Prerequisites
 
-### Run Migration Scripts
-\`\`\`bash
-# Connect to Supabase SQL Editor
-# Execute scripts in order:
-# 1. scripts/001_create_tables.sql
-# 2. scripts/002_seed_products.sql
-\`\`\`
+### System Requirements
+- Node.js 18+ 
+- pnpm package manager
+- Docker and Docker Compose
+- Git
+- PostgreSQL (for local development, optional)
 
-### Verify Tables Created
-In Supabase dashboard, check:
-- products (11 sample items)
-- cart_items
-- orders
-- reviews
-- blog_posts
-- profiles
-- etc.
+### Recommended Environment
+- OS: macOS, Linux, or Windows with WSL2
+- RAM: 8GB or more
+- Disk Space: 5GB available
 
-## Step 3: Authentication Setup
+## Development Setup
 
-### Enable Email Auth in Supabase
-1. Project Settings → Authentication
-2. Enable "Email" provider
-3. Set email templates (optional)
-4. Configure redirect URLs:
-   - Development: `http://localhost:3000`
-   - Production: `https://your-domain.com`
+### 1. Clone the Repository
+```bash
+git clone https://github.com/happies2012-cpu/priya-herbal.git
+cd priya-herbal
+```
 
-## Step 4: Local Development
+### 2. Install Dependencies
+```bash
+# Using pnpm (recommended)
+pnpm install
 
-\`\`\`bash
-# Install dependencies
+# Or using npm
 npm install
 
-# Start dev server
+# Or using yarn
+yarn install
+```
+
+### 3. Set Up Environment Variables
+Create a `.env.local` file in the root directory with the following variables:
+
+```env
+# Supabase Configuration
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+SUPABASE_SERVICE_ROLE_KEY=your_supabase_service_role_key
+
+# Cashfree Payment Gateway
+NEXT_PUBLIC_CASHFREE_CLIENT_ID=your_cashfree_client_id
+NEXT_PUBLIC_CASHFREE_CLIENT_SECRET=your_cashfree_client_secret
+NEXT_PUBLIC_CASHFREE_MODE=sandbox
+
+# Email Configuration
+RESEND_API_KEY=your_resend_api_key
+FROM_EMAIL=your_from_email
+
+# Authentication Configuration
+NEXTAUTH_SECRET=your_nextauth_secret
+NEXTAUTH_URL=http://localhost:3000
+
+# AI Configuration (Optional)
+OPENAI_API_KEY=your_openai_api_key
+```
+
+### 4. Run the Development Server
+```bash
+# Start the development server
+pnpm dev
+
+# Or with npm
 npm run dev
 
-# Server runs at http://localhost:3000
-\`\`\`
+# The application will be available at http://localhost:3000
+```
 
-### Test Authentication
-1. Go to http://localhost:3000/auth/sign-up
-2. Create test account
-3. Check email for verification link
-4. Click link to verify
-5. Login with account
+## Production Setup
 
-## Step 5: Test Products & Shopping
+### 1. Build the Application
+```bash
+# Build for production
+pnpm build
 
-1. Go to http://localhost:3000/shop
-2. Filter by category
-3. Click product to view details
-4. Add to cart
-5. Go to cart page (/cart)
-6. Proceed to checkout (/checkout)
+# Or with npm
+npm run build
+```
 
-### Test Payment Integration
-- Use Cashfree test mode
-- Test UPI, card, net banking flows
-- Verify order creation in database
+### 2. Start the Production Server
+```bash
+# Start the production server
+pnpm start
 
-## Step 6: Deploy to Vercel
+# Or with npm
+npm run start
+```
 
-### Connect GitHub
-\`\`\`bash
-# Push to GitHub
-git push origin main
-\`\`\`
+## Database Initialization
 
-### Deploy on Vercel
-1. vercel.com → New Project
-2. Import GitHub repo
-3. Add environment variables
-4. Deploy
+### Manual Database Setup
+If you're not using the Docker setup, you'll need to manually set up your database:
 
-## Step 7: Post-Deployment
+1. Create a PostgreSQL database
+2. Run the initialization scripts in order:
+   - `scripts/001_create_tables.sql`
+   - `scripts/002_seed_products.sql`
+   - `scripts/003_enhanced_affiliate_tables.sql`
+   - `scripts/004_seed_affiliate_data.sql`
 
-### Verify Production
-- Test sign up → Login flow
-- Browse products
-- Complete test order
-- Check Supabase for data
+### Using Prisma (Alternative)
+```bash
+# Generate Prisma client
+npx prisma generate
 
-### Set Up Domain
-1. Add custom domain in Vercel
-2. Update Supabase redirect URLs
-3. Configure email with your domain
+# Push schema to database
+npx prisma db push
 
-### Monitor
-- Check Vercel analytics
-- Monitor Supabase usage
-- Track Cashfree transactions
+# Seed the database
+npx prisma db seed
+```
 
-## Customization Checklist
+## Environment Variables
 
-- [ ] Update company info in footer
-- [ ] Add your WhatsApp number
-- [ ] Update email/phone contacts
-- [ ] Customize product images
-- [ ] Update blog content
-- [ ] Set up newsletter service
-- [ ] Configure analytics
-- [ ] Enable SEO meta tags
+### Required Variables
 
-## Common Issues & Solutions
+#### Supabase Configuration
+- `NEXT_PUBLIC_SUPABASE_URL`: Your Supabase project URL
+- `NEXT_PUBLIC_SUPABASE_ANON_KEY`: Your Supabase anonymous key
+- `SUPABASE_SERVICE_ROLE_KEY`: Your Supabase service role key (keep secret)
 
-### Email not received
-- Check spam folder
-- Verify sender email in Supabase
-- Test with test@example.com
+#### Cashfree Payment Gateway
+- `NEXT_PUBLIC_CASHFREE_CLIENT_ID`: Cashfree client ID
+- `NEXT_PUBLIC_CASHFREE_CLIENT_SECRET`: Cashfree client secret (keep secret)
+- `NEXT_PUBLIC_CASHFREE_MODE`: Either `sandbox` or `production`
 
-### Cart not saving
-- Check browser localStorage
-- Verify user is authenticated
-- Check RLS policies on cart_items table
+#### Email Configuration
+- `RESEND_API_KEY`: Resend API key
+- `FROM_EMAIL`: Email address to send emails from
 
-### Payment failing
-- Verify Cashfree API keys
-- Check Cashfree merchant account status
-- Use Cashfree test keys first
+#### Authentication Configuration
+- `NEXTAUTH_SECRET`: Secret for NextAuth.js (use a random string)
+- `NEXTAUTH_URL`: URL of your application
 
-### Images not loading
-- Check image URLs
-- Verify CORS settings
-- Use proper image formats (jpg, png, webp)
+### Optional Variables
+- `OPENAI_API_KEY`: For AI features
+- `NODE_ENV`: Set to `production` for production environments
 
-## Next Steps
+## Payment Gateway Integration
 
-1. Add more products to database
-2. Create email templates
-3. Set up analytics (Google Analytics)
-4. Configure SMS alerts (optional)
-5. Add customer support chat
-6. Set up admin dashboard
-7. Monitor and optimize performance
+### Cashfree Setup
+1. Create an account at Cashfree
+2. Get your client ID and secret
+3. For testing, use sandbox mode
+4. For production, switch to production mode
+5. Configure webhooks for payment notifications
 
-## Support
+### Payment Flow
+1. User initiates payment on frontend
+2. Payment request sent to Cashfree
+3. User completes payment
+4. Cashfree sends webhook notification
+5. Application processes payment confirmation
 
-Need help? Check:
-- README.md for overview
-- Database schema documentation
-- Supabase docs: supabase.com/docs
-- Next.js docs: nextjs.org/docs
+## Authentication Setup
+
+### Supabase Authentication
+1. Create a Supabase project
+2. Configure email authentication
+3. Set up email templates
+4. Configure security rules
+
+### Supported Authentication Methods
+- Email/password
+- Social login (Google, Facebook, etc.)
+
+## Docker Deployment
+
+### Prerequisites
+- Docker 20+ 
+- Docker Compose 1.29+
+
+### Build and Run
+```bash
+# Build and run with Docker Compose
+docker-compose up --build
+
+# Run in detached mode
+docker-compose up -d --build
+
+# Access the application at http://localhost:3000
+```
+
+### Docker Compose Services
+- `app`: Next.js application
+- `db`: PostgreSQL database
+- `init-db`: Database initialization
+
+### Docker Environment Variables
+Create a `.env` file for Docker with the same variables as above plus:
+- `DB_PASSWORD`: Database password
+
+## Coolify Deployment
+
+### Prerequisites
+- Coolify server instance
+- Domain name pointing to Coolify server
+
+### Deployment Steps
+1. Create a new Docker Compose application in Coolify
+2. Point to this Git repository
+3. Add all environment variables
+4. Use the provided `docker-compose.yml`
+5. Deploy the application
+
+### Post-Deployment
+1. Configure SSL certificate
+2. Set up domain
+3. Configure backups
+4. Set up monitoring
+
+## Troubleshooting
+
+### Common Issues
+
+#### Build Errors
+- Ensure all dependencies are installed
+- Check Node.js version compatibility
+- Verify environment variables are set correctly
+
+#### Database Connection Issues
+- Verify database URL and credentials
+- Check if database service is running
+- Ensure firewall rules allow connections
+
+#### Payment Gateway Issues
+- Verify Cashfree credentials
+- Check webhook configuration
+- Ensure correct mode (sandbox vs production)
+
+#### Authentication Issues
+- Verify Supabase configuration
+- Check if email templates are set up
+- Ensure security rules are properly configured
+
+### Development Commands
+
+#### Useful Scripts
+```bash
+# Run development server
+pnpm dev
+
+# Build for production
+pnpm build
+
+# Run production server
+pnpm start
+
+# Run linting
+pnpm lint
+
+# Run type checking
+pnpm type-check
+
+# Docker build
+pnpm docker:build
+
+# Docker run
+pnpm docker:run
+
+# Docker development
+pnpm docker:dev
+
+# Docker production
+pnpm docker:prod
+```
+
+#### Docker Commands
+```bash
+# View logs
+docker-compose logs -f
+
+# View service status
+docker-compose ps
+
+# Restart services
+docker-compose restart
+
+# Stop services
+docker-compose down
+
+# Execute command in container
+docker-compose exec app bash
+```
+
+## Security Best Practices
+
+1. Never commit secrets to version control
+2. Use strong, unique passwords
+3. Enable SSL/TLS
+4. Regularly update dependencies
+5. Monitor for security vulnerabilities
+6. Implement proper input validation
+7. Use environment variables for secrets
+8. Regularly backup data
+
+## Performance Optimization
+
+1. Enable Next.js static optimization
+2. Use image optimization
+3. Implement caching strategies
+4. Optimize database queries
+5. Use CDN for static assets
+6. Implement lazy loading
+7. Minimize bundle size
+
+## Monitoring and Maintenance
+
+### Logging
+- Application logs
+- Database logs
+- Error tracking
+- Performance metrics
+
+### Backups
+- Database backups
+- File storage backups
+- Configuration backups
+- Version control
+
+### Updates
+- Dependency updates
+- Security patches
+- Feature updates
+- Performance improvements

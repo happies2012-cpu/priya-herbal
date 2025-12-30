@@ -1,6 +1,6 @@
 # Priya Herbal - Complete E-commerce Platform
 
-A premium Indian herbal e-commerce platform featuring glassy UI, AI recommendations, and comprehensive admin tools.
+A premium Indian herbal e-commerce platform featuring glassy UI, AI recommendations, and comprehensive admin tools. This is a complete, production-ready solution with Docker containerization for easy deployment.
 
 ## 🌿 Features
 
@@ -12,6 +12,8 @@ A premium Indian herbal e-commerce platform featuring glassy UI, AI recommendati
 - **Admin Dashboard**: Order & inventory management
 - **Affiliate Program**: Affiliate dashboard and tracking
 - **Responsive Design**: Mobile-first approach
+- **Complete Docker Setup**: One-click deployment with database initialization
+- **Coolify Deployment Ready**: Optimized for Coolify platform deployment
 
 ## 🛠️ Tech Stack
 
@@ -21,6 +23,8 @@ A premium Indian herbal e-commerce platform featuring glassy UI, AI recommendati
 - **Payments**: Cashfree Payment Gateway
 - **Deployment**: Docker containerization
 - **Animations**: Framer Motion for fluid interactions
+- **Database**: PostgreSQL with automated initialization
+- **Email**: Resend for transactional emails
 
 ## 🚀 One-Click Docker Deployment to Coolify
 
@@ -33,7 +37,7 @@ A premium Indian herbal e-commerce platform featuring glassy UI, AI recommendati
 
 1. Clone this repository
 2. In your Coolify instance, create a new application
-3. Select "Docker" as the application type
+3. Select "Docker Compose" as the application type
 4. Point to this repository
 5. Use the provided `docker-compose.yml` file
 6. Add the environment variables as described below
@@ -61,27 +65,35 @@ FROM_EMAIL=your_from_email
 # AI Configuration (Optional)
 OPENAI_API_KEY=your_openai_api_key
 
-# Other Configuration
+# Authentication Configuration
 NEXTAUTH_SECRET=your_nextauth_secret
 NEXTAUTH_URL=your_nextauth_url
+
+# Database Configuration
+DB_PASSWORD=your_secure_db_password
 ```
 
 ### Docker Compose Configuration
 
 The project includes a `docker-compose.yml` file that handles:
 
-- Application container
-- Database initialization
+- Application container (Next.js)
+- Database container (PostgreSQL)
+- Initialization container (runs setup scripts)
 - Environment configuration
 - Volume mounting for persistent data
+- Health checks and dependencies
 
 ### Database Setup
 
 The Docker setup automatically:
 1. Creates the required PostgreSQL database
-2. Runs all database migration scripts
+2. Runs all database migration scripts in sequence
 3. Seeds initial data including products and categories
 4. Sets up proper relationships and constraints
+5. Creates all required tables for e-commerce functionality
+6. Initializes affiliate program tables
+7. Sets up authentication tables
 
 ### Payment Gateway Integration
 
@@ -90,6 +102,23 @@ All payment gateways (Cashfree) are pre-configured in the Docker setup:
 - Webhook handling
 - Transaction management
 - Refund processing
+- Payment status tracking
+
+### Complete E-commerce Features in Docker
+
+When deployed with Docker, the application includes:
+- Full product catalog with 50+ herbal products
+- Shopping cart functionality
+- User authentication and management
+- Order processing system
+- Payment gateway integration
+- Admin dashboard
+- Affiliate program
+- AI recommendations
+- AI chat assistant
+- Email notifications
+- Inventory management
+- Review system
 
 ## 🏗️ Project Structure
 
